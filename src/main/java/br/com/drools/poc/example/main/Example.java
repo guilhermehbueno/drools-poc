@@ -1,16 +1,16 @@
 package br.com.drools.poc.example.main;
 
-import org.drools.KnowledgeBase;
-import org.drools.KnowledgeBaseFactory;
-import org.drools.builder.KnowledgeBuilder;
-import org.drools.builder.KnowledgeBuilderError;
-import org.drools.builder.KnowledgeBuilderErrors;
-import org.drools.builder.KnowledgeBuilderFactory;
-import org.drools.builder.ResourceType;
-import org.drools.io.ResourceFactory;
-import org.drools.logger.KnowledgeRuntimeLogger;
-import org.drools.logger.KnowledgeRuntimeLoggerFactory;
-import org.drools.runtime.StatefulKnowledgeSession;
+import org.kie.api.io.ResourceType;
+import org.kie.internal.KnowledgeBase;
+import org.kie.internal.KnowledgeBaseFactory;
+import org.kie.internal.builder.KnowledgeBuilder;
+import org.kie.internal.builder.KnowledgeBuilderError;
+import org.kie.internal.builder.KnowledgeBuilderErrors;
+import org.kie.internal.builder.KnowledgeBuilderFactory;
+import org.kie.internal.io.ResourceFactory;
+import org.kie.internal.logger.KnowledgeRuntimeLogger;
+import org.kie.internal.logger.KnowledgeRuntimeLoggerFactory;
+import org.kie.internal.runtime.StatefulKnowledgeSession;
 
 import br.com.drools.poc.model.Person;
 
@@ -22,7 +22,7 @@ public class Example {
 			
 			knowledgeBuilder.add(ResourceFactory.newClassPathResource("say_something.dsl"), ResourceType.DSL);
 			knowledgeBuilder.add(ResourceFactory.newClassPathResource("rockys_rules.dslr"), ResourceType.DSLR);
-			knowledgeBuilder.add(ResourceFactory.newClassPathResource("rockys_rules2.dslr"), ResourceType.DSLR);
+			//knowledgeBuilder.add(ResourceFactory.newClassPathResource("rockys_rules2.dslr"), ResourceType.DSLR);
 			
 			KnowledgeBuilderErrors errors = knowledgeBuilder.getErrors();
 			if (errors.size() > 0) {

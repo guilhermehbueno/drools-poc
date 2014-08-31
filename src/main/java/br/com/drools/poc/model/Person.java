@@ -4,6 +4,7 @@ public class Person {
 	private String name;
 	private String location;
 	private Integer age;
+	private String message;
 
 	public Person(String name, String location, Integer age) {
 		this.name = name;
@@ -23,4 +24,17 @@ public class Person {
 		return age;
 	}
 
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", location=" + location + ", age="
+				+ age + ", message=" + message + "]";
+	}
 }
