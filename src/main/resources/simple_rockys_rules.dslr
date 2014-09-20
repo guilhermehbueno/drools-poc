@@ -1,0 +1,13 @@
+package br.com.search.rules 
+
+import br.com.drools.poc.model.Message 
+import br.com.drools.poc.model.Person 
+
+expander search.dsl 
+
+rule "Say Hello" 
+    when 
+        If there is a Person with name of "Rocky"
+    then 
+        Say "Hello! Deu certo!"
+end 

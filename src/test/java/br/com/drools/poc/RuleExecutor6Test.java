@@ -14,22 +14,21 @@ import br.com.drools.poc.model.Person;
 
 public class RuleExecutor6Test {
 	
-	@Test
+	//@Test
 	public void test(){
 		RuleResource dsl = new RuleResource();
 		dsl.setResourceName("say_something.dsl");
-		dsl.setType(ResourceType.DSL);
 		
 		RuleResource dslr = new RuleResource();
 		dslr.setResourceName("rockys_rules.dslr");
-		dslr.setType(ResourceType.DSLR);
 		
 		RulesExecutor6 rulesExecutor6 = new RulesExecutor6(dsl, dslr);
 		Person rocky = new Person("Rocky Balboa", "Philadelphia", 35);
 		rulesExecutor6.execute(rocky);
+		System.out.println(rocky);
 	}
 	
-	@Test
+	//@Test
 	public void testSimpleDRLs(){
 		RuleResource drl = new RuleResource();
 		drl.setResourceName("simple.drl");
@@ -40,7 +39,7 @@ public class RuleExecutor6Test {
 		rulesExecutor6.execute(rocky);
 	}
 	
-	@Test
+	//@Test
 	public void shouldLoadRuleFromString() throws Exception{		
 		String content = IOUtils.toString(new FileReader("src/main/resources/simple.drl"));
 		RuleResource drl = new RuleResource();
@@ -49,6 +48,25 @@ public class RuleExecutor6Test {
 		drl.setContent(content);
 		RulesExecutor6 rulesExecutor6 = new RulesExecutor6(drl);
 		Person rocky = new Person("Rocky Balboa", "Philadelphia", 35);
+		rulesExecutor6.execute(rocky);
+		Assert.assertNotNull(content);
+	}
+	
+	@Test
+	public void shouldLoadRuleAndDslFromString() throws Exception{
+		String dslContent = IOUtils.toString(new FileReader("src/main/resources/search.dsl"));
+		RuleResource dsl = new RuleResource();
+		dsl.setResourceName("search.dsl");
+		System.out.println(dslContent);
+		dsl.setContent(dslContent);
+		
+		String content = IOUtils.toString(new FileReader("src/main/resources/simple_rockys_rules.dslr"));
+		System.out.println(content);
+		RuleResource dslr = new RuleResource();
+		dslr.setResourceName("simple_rockys_rules.dslr");
+		dslr.setContent(content);
+		RulesExecutor6 rulesExecutor6 = new RulesExecutor6(dsl, dslr);
+		Person rocky = new Person("Rocky", "Philadelphia", 35);
 		rulesExecutor6.execute(rocky);
 		Assert.assertNotNull(content);
 	}

@@ -1,0 +1,25 @@
+import br.com.drools.poc.model.Applicant
+
+rule "Is of valid age"
+
+when 
+	$a : Applicant(age>=18)
+then
+	$a.setValid(true);
+end
+
+rule "Is of valid age to"
+
+when 
+	$a : Applicant(age>=18)
+then
+	$a.setName($a.getName()+"--Passou por aqui tb");
+end
+
+rule "Is not of valid age"
+
+when
+	$a : Applicant(age<18F)
+then
+	$a.setValid(false);
+end
